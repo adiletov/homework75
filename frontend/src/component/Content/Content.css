@@ -1,0 +1,16 @@
+.block{
+    margin: 30px;
+}
+.form-block {
+    width: 300px;
+    margin-left: 30px;
+}
+.form-block input{
+    width: 50%;
+    font-size: 18px;
+    padding: 10px;
+}
+.form-block button{
+   font-size: 18px;
+    padding: 10px;
+}
