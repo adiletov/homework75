@@ -6,14 +6,14 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) =>{
-  switch (action.type) {
-      case ORDER_PASSWORD_ENCODE_SUCCESS:
-          return {...state, encode: action.password , decode: ''};
-      case ORDER_PASSWORD_DECODE_SUCCESS:
-          return {...state, decode: action.password, encode: ''};
-      default:
-          return state
-  }
+    switch (action.type) {
+        case ORDER_PASSWORD_ENCODE_SUCCESS:
+            return {...state, encode: action.password.encode , decode: ''};
+        case ORDER_PASSWORD_DECODE_SUCCESS:
+            return {...state, decode: action.password.decode, encode: ''};
+        default:
+            return state
+    }
 };
 
 export default reducer;

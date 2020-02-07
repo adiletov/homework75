@@ -10,10 +10,11 @@ export const getPasswordDecode = (password) => ({type: ORDER_PASSWORD_DECODE_SUC
 export const orderPasswordError = () => ({type: ORDER_PASSWORD_ERROR});
 
 
-export const getOrderPasswordEncode = () =>{
-    return async (dispatch) => {
+
+export const postEncode = (password) => {
+    return async (dispatch)=>{
         try{
-            const res = await axiosApi.get('/password');
+           const res =  await axiosApi.post('/encode', password);
             dispatch(getPasswordEncode(res.data))
         }catch (e) {
             dispatch(orderPasswordError())
@@ -21,35 +22,13 @@ export const getOrderPasswordEncode = () =>{
     }
 };
 
-export const getOrderPasswordDecode = () =>{
-    return async (dispatch) => {
+export const postDecode = (password) => {
+    return async (dispatch)=>{
         try{
-            const res = await axiosApi.get('/password');
+            const res = await axiosApi.post('/decode', password);
             dispatch(getPasswordDecode(res.data))
         }catch (e) {
             dispatch(orderPasswordError())
         }
     }
-};
-
-export const postEncode = (password) => {
-    return async (dispatch)=>{
-        try{
-            await axiosApi.post('/encode', password);
-            dispatch(getOrderPasswordEncode())
-        }catch (e) {
-            dispatch(orderPasswordError())
-        }
-    }
-};
-
-export const postDecode = (password) => {
-  return async (dispatch)=>{
-      try{
-          await axiosApi.post('/decode', password);
-          dispatch(getOrderPasswordDecode())
-      }catch (e) {
-          dispatch(orderPasswordError())
-      }
-  }
 };
